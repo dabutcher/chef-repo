@@ -1,0 +1,12 @@
+#!upstart
+description "Minecraft Server"
+
+env USER=<%= node[:minecraft][:user] %>
+
+start on startup
+stop on shutdown
+
+respawn
+
+exec sudo -u $USER sh -c "cd <%= node[:minecraft][:dir] %> && \
+java -Xmx<%= node[:minecraft][:ram] %> -Xms<%= node[:minecraft][:ram] %> -jar minecraft_server.jar nogui"

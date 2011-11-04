@@ -41,6 +41,7 @@ end
 # rake -T to see the tasks this loads.
 
 load 'chef/tasks/chef_repo.rake'
+load 'deploy.rake'
 
 desc "Bundle a single cookbook for distribution"
 task :bundle_cookbook => [ :metadata ]
