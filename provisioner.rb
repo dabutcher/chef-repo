@@ -60,7 +60,7 @@ class Provisioner
       sudo apt-get -o Dpkg::Options::="--force-confnew" \
           --force-yes -fuy dist-upgrade &&
       sudo aptitude install -y build-essential make \
-      zlib1g zlib1g-dev libreadline5 libreadline5-dev libssl-dev &&
+      zlib1g zlib1g-dev libreadline5 libreadline5-dev libssl-dev
       #{install_ruby}
       sudo gem install --no-rdoc --no-ri chef ruby-shadow
     EOH
@@ -114,8 +114,8 @@ class Provisioner
       hash['provisioner']['username'] || raise
     @host = ENV['host'] || ENV['HOST'] ||
       hash['provisioner']['host'] || raise
-    @ruby_version = ENV['ruby_version'] || ENV['RUBY_VERSION'] ||
-      hash['provisioner']['ruby_version'] || 'system'
+    @ruby_version = ENV['ruby'] || ENV['RUBY'] ||
+      hash['provisioner']['ruby'] || 'system'
     options = hash['provisioner']['options'] || {}
     @options = Hash[*options.map { |k,v| [k.to_sym, v] }.flatten]
     @options.merge!(:keys => Dir['keys/**/*.pem'])
