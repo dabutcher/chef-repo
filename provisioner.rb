@@ -76,9 +76,10 @@ class Provisioner
        cd ..
        wget http://production.cf.rubygems.org/rubygems/rubygems-1.8.10.tgz
        tar zxf rubygems-1.8.10.tgz && cd rubygems-1.8.10
-       ruby setup.rb'
+       sudo ruby setup.rb
+       cd ..'
     when '1.8.7', '1.8'
-    when '1.8.7ree'
+    when 'ree-1.8.7', 'ree'
     when 'system1.9'
     else # system 1.8
       'sudo aptitude install -y ruby rubygems ruby-dev libopenssl-ruby1.8 &&
